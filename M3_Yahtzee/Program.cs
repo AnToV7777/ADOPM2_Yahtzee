@@ -16,28 +16,32 @@ namespace M3_Yahtzee
             try
             {
                 int _nrDice;
-                //csConsoleInput.TryReadInt32("How many dice?", 1, 10, out _nrDice);
+                csConsoleInput.TryReadInt32("How many dice?", 1, 10, out _nrDice);
 
-                Console.WriteLine("How many dice?");
-                string input = Console.ReadLine();
-                _nrDice = int.Parse(input);
+                // Console.WriteLine("How many dice?");
+                // string input = Console.ReadLine();
+                // _nrDice = int.Parse(input);
 
                 ICupOfDice cup2 = new csCupOfDice(_nrDice);
                 Console.WriteLine($"Newly created cup\n{cup2}");
-                Console.WriteLine($"NrOfDice: {cup2.Count}");
-                Console.WriteLine($"Dice[0]: {cup2[0]}");
-                Console.WriteLine($"Dice[{cup2.Count - 1}]: {cup2[cup2.Count - 1]}");
 
-                Console.WriteLine($"\nSorted cup\n{cup2.Sort()}");
-                Console.WriteLine($"Dice[0]: {cup2[0]}");
-                Console.WriteLine($"Dice[{cup2.Count - 1}]: {cup2[cup2.Count - 1]}");
+                //Sort the cup and print it
+                Console.WriteLine($"\nSorted Cup\n{cup2.Sort()}");
 
-                Console.WriteLine($"\nShaken cup\n{cup2.Shake()}");
-                Console.WriteLine($"Dice[0]: {cup2[0]}");
-                Console.WriteLine($"Dice[{cup2.Count - 1}]: {cup2[cup2.Count - 1]}");
+                //Shuffle the cup and print out the shuffled cup
+                Console.WriteLine($"\nShaken Cup\n{cup2.Shake()}");
 
+                //Go trough and print the dices with their index.
+                for(int i = 0; i < cup2.Count; i++)
+                {
+                    Console.WriteLine($"Dice[{i}]: {cup2[i]}");
+                }
+
+                //Highest and Lowest dice in the cup
                 Console.WriteLine($"\nHighest: {cup2.Highest}");
                 Console.WriteLine($"Lowest: {cup2.Lowest}");
+
+
             }
             catch (Exception ex)
             {
@@ -49,15 +53,20 @@ namespace M3_Yahtzee
             #region sprint 4
             Console.WriteLine("\n\nSprint 4");
 
-            ICupDoubleDice doubleDice = null;
+            //Create an instance of the csCupDoubleDice
+            ICupDoubleDice doubleDice = new csCupDoubleDice(2);
+
+            //Print out the dice in the cup
             Console.WriteLine($"Cup of double dices\n{doubleDice}");
 
             //Continue with your code
+            //Print out the result of IsPair
+            Console.WriteLine($"IsPair: {doubleDice.IsPair}");
             #endregion
 
             #region sprint 5
             Console.WriteLine("\n\nSprint 5");
-
+            
             //Test the YahtzeeDices
             ICupYahtzeeDice yahtzeeDice = null;
             Console.WriteLine($"Cup of Yahtzee dices\n{yahtzeeDice}");
